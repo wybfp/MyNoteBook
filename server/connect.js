@@ -2,14 +2,18 @@ var mongoose=require('mongoose')
 
 var Schema=mongoose.Schema
 
-mongoose.connect('mongodb://localhost/notebook')
+mongoose.connect('mongodb://localhost/notebook', { useFindAndModify: false })
 
 var todoSchema=new Schema({
     id:{
-        type:Number,
+        type:String,
         required:true
     },
     level:{
+        type:String,
+        required:true
+    },
+    kind:{
         type:String,
         required:true
     },
@@ -24,6 +28,10 @@ var todoSchema=new Schema({
     finishedDate:{
         type:Date,
      
+    },
+    done:{
+        type:Boolean,
+        default:false
     },
     
 })
